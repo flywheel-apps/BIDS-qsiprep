@@ -1,5 +1,5 @@
 # editme: Change this to the BIDS App container
-FROM python:3.9-buster as base
+FROM pennbbl/qsiprep:0.12.2 as base
 
 # editme: Change this to your email.
 LABEL maintainer="support@flywheel.io"

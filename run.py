@@ -36,7 +36,7 @@ CONTAINER = f"{REPO}/{GEAR}]"
 # editme: The following 4 constants are the main things to edit.  Run-time Parameters
 # passed to the command need to be set up in manifest.json.
 # The BIDS App command to run, e.g. "mriqc"
-BIDS_APP = "./tests/test.sh"
+BIDS_APP = "qsiprep"
 
 # What level to run at (positional_argument #3)
 ANALYSIS_LEVEL = "participant"  # "group"
@@ -76,11 +76,21 @@ def generate_command(config, work_dir, output_analysis_id_dir, errors, warnings)
     # 3 positional args: bids path, output dir, 'participant'
     # This should be done here in case there are nargs='*' arguments
     # These follow the BIDS Apps definition (https://github.com/BIDS-Apps)
-    # editme: add any positional arguments that the command needs
+    # This app only requires the three provided arguments 
+    # (https://qsiprep.readthedocs.io/en/latest/usage.html)
 
     # get parameters to pass to the command by skipping gear config parameters
     # (which start with "gear-").
     command_parameters = {}
+
+    rs_path = gtk_context.get_input_path("recon-spec")
+    if rs_path:
+        command_parameters['recon-spec'] = rs_path
+
+    eddy_path = gtk_context.get_input_path("eddy-config")
+    if eddy_path:
+        command_parameters['eddy-config'] = eddy_path
+
     for key, val in config.items():
 
         # these arguments are passed directly to the command as is
@@ -92,9 +102,83 @@ def generate_command(config, work_dir, output_analysis_id_dir, errors, warnings)
         elif not key.startswith("gear-"):
             command_parameters[key] = val
 
+
+        elif key == 'gear-run-bids-validation':
+            if not val:
+                command_parameters['skip-bids-validation'] = True
+
+
     # editme: Validate the command parameter dictionary - make sure everything is
     # ready to run so errors will appear before launching the actual gear
     # code.  Add descriptions of problems to errors & warnings lists.
+    """
+    Notes on inputs:  These notes follow the input order as documented here:
+    https://qsiprep.readthedocs.io/en/latest/usage.html#command-line-arguments
+    
+    * Positional arguments are covered by the template
+    * version: SKIPPED, can be passed in as a gear argument
+    * Skip-bids-validation: SKIPPED combined with the template's "run_validation"
+    * participant-label: SKIPPED handled by the template
+    * acquisition-type: ADDED  but it may be handled by the template, not sure what it does
+    * interactive-reports-only: ADDED as boolean
+    * recon-only: SKIPPED for now because I think due to flywheel infrastructure, there's no
+        way to pass in "preprocessed" data to this gear...I could be wrong. 
+    * recon-spec: ADDED, maybe qsi has some recon pipeline stuff built in? (added as input)
+    * recon-input: SKIPPED because gear
+    * nthreads: SKIPPED, handled by template
+    * omp-nthreads: SKIPPED, handled by template
+    * mem_mb: SKIPPED, handled by template
+    * low-mem: SKIPPED, not necessary
+    * use-plugin: SKIPPED, UNKNOWN, skipped
+    * anat-only: ADDED
+    * dwi-only: ADDED
+    * infant: ADDED
+    * boilerplate: ADDED
+    * verbose: SKIPPED handled by template
+    * ignore: SKIPPED handled by template
+    * longitudinal: ADDED
+    * b0-threshold: ADDED
+    * dwi-denoise-window: ADDED
+    * unringing-method: ADDED
+    * dwi-no-biascorr: ADDED
+    * no-b0-harmonization: ADDED
+    * denoise-before-combining: SKIPPED, because deprecated
+    * denoise-after-combining: ADDED
+    * combine-all-dwis: ADDED because denoise-after requires it
+    * separate-all-dwis: ADDED
+    * distortion-group-merge: ADDED
+    * write-local-bvecs: ADDED
+    * output-space: ADDED...though it seems limited, it's not deprecated...maybe they have future plans?
+    * template: ADDED, though also limited
+    * output-resolution: ADDED
+    * b0-to-t1w-transform
+    * intramodal-template-iters: ADDED
+    * intramodal-template-transform: ADDED
+    * b0-motion-corr-to: ADDED
+    * hmc-transform: ADDED
+    * hmc_model: ADDED
+    * eddy-config: ADDED
+    * shoreline_iters: ADDED
+    * impute-slice-threshold: ADDED
+    * skull-strip-template: ADDED
+    * skull-strip-fixed-seed: ADDED as bool, not clear if it needs an input
+    * force-spatial-normalization: SKIPPED, deprecated
+    * skip-t1-based-spatial-normalization: ADDED
+    * fs-license-file: SKIPPED, handled by template
+    * do-reconall: ADDED
+    * prefer_dedicated_fmaps: ADDED
+    * fmap-bspline: ADDED
+    * fmap-no-demean: ADDED
+    * use-syn-sdc: ADDED
+    * force-syn: ADDED
+    * reports-only: ADDED for ease of access
+    All other options from the "Other Options" section are left out, as these can be passed into the 
+    "bids_app_args" section
+    
+    """
+    
+    
+    
     # print("command_parameters:", json.dumps(command_parameters, indent=4))
     if "bad_arg" in cmd:
         errors.append("A bad argument was found in the config.")
