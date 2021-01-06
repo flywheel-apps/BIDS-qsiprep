@@ -1,13 +1,13 @@
 {
-  "name": "bids-app-template",
-  "label": "<Bids-App-Template>: short human-friendly name/description displayed in interface",
+  "name": "bids-qsiprep",
+  "label": "BIDS qsiprep",
   "description": "<editme Name> (<version>) longer description.",
-  "version": "0.0.0_0.12.2",
+  "version": "0.0.0b_0.12.2",
   "custom": {
-    "docker-image": "flywheel/bids-app-template:0.0.0_0.12.2",
+    "docker-image": "flywheel/bids-qsiprep:0.0.0_0.12.2",
     "gear-builder": {
       "category": "analysis",
-      "image": "flywheel/bids-app-template:0.0.0_0.12.2"
+      "image": "flywheel/bids-qsiprep:0.0.0_0.12.2"
     },
     "flywheel": {
       "suite": "BIDS Apps"
@@ -56,7 +56,7 @@
     },
     "eddy-config": {
       "description": "path to a json file with settings for the call to eddy. If no json is specified, a default one will be used. The current default json can be found here: https://github.com/PennBBL/qsiprep/blob/master/qsiprep/data/eddy_params.json",
-      "type": "file",
+      "base": "file",
       "optional": true
     }
   },
@@ -184,7 +184,7 @@
     "output-resolution": {
       "description": "the isotropic voxel size in mm the data will be resampled to after preprocessing. If set to a lower value than the original voxel size, your data will be upsampled using BSpline interpolation.",
       "type": "number",
-      "optional": true
+      "default": 1
     },
     "b0-to-t1w-transform": {
       "description": "Degrees of freedom when registering b0 to T1w images. 6 degrees (rotation and translation) are used by default.",
@@ -353,9 +353,9 @@
       "optional": true,
       "type": "integer"
     },
-    "mem_gb": {
-      "description": "Maximum memory to use (GB)",
-      "optional": true,
+    "mem_mb": {
+      "description": "Maximum memory to use (MB)",
+      "default": 10240,
       "type": "integer"
     },
     "write-graph": {

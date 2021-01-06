@@ -83,13 +83,6 @@ def generate_command(config, work_dir, output_analysis_id_dir, errors, warnings)
     # (which start with "gear-").
     command_parameters = {}
 
-    rs_path = gtk_context.get_input_path("recon-spec")
-    if rs_path:
-        command_parameters['recon-spec'] = rs_path
-
-    eddy_path = gtk_context.get_input_path("eddy-config")
-    if eddy_path:
-        command_parameters['eddy-config'] = eddy_path
 
     for key, val in config.items():
 
@@ -253,6 +246,15 @@ def main(gtk_context):
         destination_id,
         FREESURFER_LICENSE,
     )
+
+    rs_path = gtk_context.get_input_path("recon-spec")
+    if rs_path:
+        config['recon-spec'] = rs_path
+
+    eddy_path = gtk_context.get_input_path("eddy-config")
+    if eddy_path:
+        config['eddy-config'] = eddy_path
+
 
     command = generate_command(
         config, work_dir, output_analysis_id_dir, errors, warnings
@@ -454,5 +456,7 @@ if __name__ == "__main__":
         gtk_context.init_logging("info")
     else:
         gtk_context.init_logging("debug")
-
+    
+    shutil.copy('/flywheel/v0/config.json', '/flywheel/v0/output/config.json')
+    
     sys.exit(main(gtk_context))

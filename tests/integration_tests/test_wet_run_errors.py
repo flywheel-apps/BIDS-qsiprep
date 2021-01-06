@@ -3,7 +3,8 @@ from pathlib import Path
 from unittest import TestCase
 
 import flywheel_gear_toolkit
-
+import sys
+sys.path.append('/flywheel/v0/')
 import run
 
 LONG_TEXT = 'Creating viewable archive "/flywheel/v0/output/index_5ebbfe82bfda51026d6aa079.html.zip'
@@ -21,7 +22,7 @@ def test_wet_run_errors(
 
     caplog.set_level(logging.DEBUG)
 
-    user_json = Path(Path.home() / ".config/flywheel/user.json")
+    user_json = Path("/root/.config/flywheel/user.json")
     if not user_json.exists():
         TestCase.skipTest("", f"No API key available in {str(user_json)}")
 

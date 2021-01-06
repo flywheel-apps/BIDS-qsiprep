@@ -51,7 +51,9 @@ main() {
     python -m pytest tests/unit_tests tests/integration_tests --exitfirst --cov=run --cov-report= "$@"
 
     log "INFO: Reporting coverage ..."
-    local COVERAGE_ARGS="--skip-covered"
+    #local COVERAGE_ARGS="--skip-covered"
+    local COVERAGE_ARGS=""
+
     coverage report --show-missing $COVERAGE_ARGS
     coverage html $COVERAGE_ARGS
 }
