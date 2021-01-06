@@ -2,7 +2,7 @@
   "name": "bids-qsiprep",
   "label": "BIDS qsiprep",
   "description": "<editme Name> (<version>) longer description.",
-  "version": "0.0.0b_0.12.2",
+  "version": "0.0.0c_0.12.2",
   "custom": {
     "docker-image": "flywheel/bids-qsiprep:0.0.0_0.12.2",
     "gear-builder": {

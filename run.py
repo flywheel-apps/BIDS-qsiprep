@@ -235,6 +235,7 @@ def main(gtk_context):
     # editme: optional features -- set # threads and max memory to use
     config["n_cpus"] = set_n_cpus(config.get("n_cpus"))
     #config["mem_mb"] = set_mem_gb(config.get("mem_gb"))
+    config['work-dir'] = work_dir
 
     environ = get_and_log_environment()
 
