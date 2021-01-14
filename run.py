@@ -458,6 +458,4 @@ if __name__ == "__main__":
     else:
         gtk_context.init_logging("debug")
     
-    shutil.copy('/flywheel/v0/config.json', '/flywheel/v0/output/config.json')
-    
     sys.exit(main(gtk_context))
