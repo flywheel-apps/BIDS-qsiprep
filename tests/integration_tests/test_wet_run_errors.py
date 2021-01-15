@@ -21,8 +21,9 @@ def test_wet_run_errors(
 ):
 
     caplog.set_level(logging.DEBUG)
-
-    user_json = Path("/root/.config/flywheel/user.json")
+    print(Path.home())
+    user_json = Path.home()/".config/flywheel/user.json"
+    print(user_json)
     if not user_json.exists():
         TestCase.skipTest("", f"No API key available in {str(user_json)}")
 
