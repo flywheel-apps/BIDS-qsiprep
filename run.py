@@ -342,7 +342,9 @@ def main(gtk_context):
 
         # editme: optional feature
         # zip any .html files in output/<analysis_id>/
-        zip_htmls(output_dir, destination_id, output_analysis_id_dir)
+        html_dir = output_analysis_id_dir / "qsiprep"
+
+        zip_htmls(html_dir, destination_id, output_analysis_id_dir)
 
         # editme: optional feature
         # possibly save ALL intermediate output
@@ -379,50 +381,50 @@ def main(gtk_context):
 
         # editme: optional feature
         # save .metadata file
-        metadata = {
-            "project": {
-                "info": {
-                    "test": "Hello project",
-                    f"{run_label} {destination_id}": "put this here",
-                },
-                "tags": [run_label, destination_id],
-            },
-            "subject": {
-                "info": {
-                    "test": "Hello subject",
-                    f"{run_label} {destination_id}": "put this here",
-                },
-                "tags": [run_label, destination_id],
-            },
-            "session": {
-                "info": {
-                    "test": "Hello session",
-                    f"{run_label} {destination_id}": "put this here",
-                },
-                "tags": [run_label, destination_id],
-            },
-            "analysis": {
-                "info": {
-                    "test": "Hello analysis",
-                    f"{run_label} {destination_id}": "put this here",
-                },
-                "files": [
-                    {
-                        "name": "bids_tree.html",
-                        "info": {
-                            "value1": "foo",
-                            "value2": "bar",
-                            f"{run_label} {destination_id}": "put this here",
-                        },
-                        "tags": ["ein", "zwei"],
-                    }
-                ],
-                "tags": [run_label, destination_id],
-            },
-        }
-        with open(f"{output_dir}/.metadata.json", "w") as fff:
-            json.dump(metadata, fff)
-            log.info(f"Wrote {output_dir}/.metadata.json")
+        # metadata = {
+        #     "project": {
+        #         "info": {
+        #             "test": "Hello project",
+        #             f"{run_label} {destination_id}": "put this here",
+        #         },
+        #         "tags": [run_label, destination_id],
+        #     },
+        #     "subject": {
+        #         "info": {
+        #             "test": "Hello subject",
+        #             f"{run_label} {destination_id}": "put this here",
+        #         },
+        #         "tags": [run_label, destination_id],
+        #     },
+        #     "session": {
+        #         "info": {
+        #             "test": "Hello session",
+        #             f"{run_label} {destination_id}": "put this here",
+        #         },
+        #         "tags": [run_label, destination_id],
+        #     },
+        #     "analysis": {
+        #         "info": {
+        #             "test": "Hello analysis",
+        #             f"{run_label} {destination_id}": "put this here",
+        #         },
+        #         "files": [
+        #             {
+        #                 "name": "bids_tree.html",
+        #                 "info": {
+        #                     "value1": "foo",
+        #                     "value2": "bar",
+        #                     f"{run_label} {destination_id}": "put this here",
+        #                 },
+        #                 "tags": ["ein", "zwei"],
+        #             }
+        #         ],
+        #         "tags": [run_label, destination_id],
+        #     },
+        # }
+        # with open(f"{output_dir}/.metadata.json", "w") as fff:
+        #     json.dump(metadata, fff)
+        #     log.info(f"Wrote {output_dir}/.metadata.json")
 
         # Report errors and warnings at the end of the log so they can be easily seen.
         if len(warnings) > 0:
