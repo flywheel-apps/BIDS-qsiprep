@@ -109,7 +109,7 @@
       "optional": true
     },
     "dwi-denoise-window": {
-      "description": "window size in voxels for dwidenoise. Must be odd (default: 5). If 0, dwidwenoise will not be run.",
+      "description": "window size in voxels for dwidenoise. Must be odd (default: 5). If 0, dwidenoise will not be run.",
       "type": "integer",
       "optional": true
     },
@@ -422,10 +422,10 @@
     "PYTHONUNBUFFERED": "1"
   },
   "command": "/usr/local/miniconda/bin/python run.py",
-  "author": "Dr. Smartypants, Whatsamatter U",
+  "author": "The Lifespan Informatics and Neuroimaging Center at the University of Pennsylvania",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "cite": "Dewy, Cheetum, and How; The templatest BIDS app you will ever see; PLOS ONE 12(9):e0184661; doi:10.1371/journal.pone.0184661.",
+  "cite": "Matthew Cieslak, Philip A. Cook, Xiaosong He, Fang-Cheng Yeh, Thijs Dhollander, Azeez Adebimpe, Geoffrey K. Aguirre, Danielle S. Bassett, Richard F. Betzel, Josiane Bourque, Laura M. Cabral, Christos Davatzikos, John Detre, Eric Earl, Mark A. Elliott, Shreyas Fadnavis, Damien A. Fair, Will Foran, Panagiotis Fotiadis, Eleftherios Garyfallidis, Barry Giesbrecht, Ruben C. Gur, Raquel E. Gur, Max Kelz, Anisha Keshavan, Bart S. Larsen, Beatriz Luna, Allyson P. Mackey, Michael Milham, Desmond J. Oathes, Anders Perrone, Adam R. Pines, David R. Roalf, Adam Richie-Halford, Ariel Rokem, Valerie J. Sydnor, Tinashe M. Tapera, Ursula A. Tooley, Jean M. Vettel, Jason D. Yeatman, Scott T. Grafton, and Theodore D. Satterthwaite. QSIPrep: An integrative platform for preprocessing and reconstructing diffusion MRI. bioRxiv, page 2020.09.04.282269, September 2020. doi:10.1101/2020.09.04.282269. Publisher: Cold Spring Harbor Laboratory Section: New Results.",
   "license": "MIT",
-  "source": "https://github.com/bids-apps/the-algorithm-run-by-the-gear",
-  "url": "https://github.com/flywheel-apps/bids-app-template"
+  "source": "https://github.com/PennLINC/qsiprep",
+  "url": "https://github.com/flywheel-apps/bids-qsiprep"
 }
