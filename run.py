@@ -112,7 +112,7 @@ def generate_command(config, work_dir, output_analysis_id_dir, errors, warnings)
     * version: SKIPPED, can be passed in as a gear argument
     * Skip-bids-validation: SKIPPED combined with the template's "run_validation"
     * participant-label: SKIPPED handled by the template
-    * acquisition-type: ADDED  but it may be handled by the template, not sure what it does
+    * acquisition_type: ADDED  but it may be handled by the template, not sure what it does
     * interactive-reports-only: ADDED as boolean
     * recon-only: SKIPPED for now because I think due to flywheel infrastructure, there's no
         way to pass in "preprocessed" data to this gear...I could be wrong. 
@@ -368,52 +368,6 @@ def main(gtk_context):
         else:
             log.info("Output directory does not exist so it cannot be removed")
 
-        # editme: optional feature
-        # save .metadata file
-        # metadata = {
-        #     "project": {
-        #         "info": {
-        #             "test": "Hello project",
-        #             f"{run_label} {destination_id}": "put this here",
-        #         },
-        #         "tags": [run_label, destination_id],
-        #     },
-        #     "subject": {
-        #         "info": {
-        #             "test": "Hello subject",
-        #             f"{run_label} {destination_id}": "put this here",
-        #         },
-        #         "tags": [run_label, destination_id],
-        #     },
-        #     "session": {
-        #         "info": {
-        #             "test": "Hello session",
-        #             f"{run_label} {destination_id}": "put this here",
-        #         },
-        #         "tags": [run_label, destination_id],
-        #     },
-        #     "analysis": {
-        #         "info": {
-        #             "test": "Hello analysis",
-        #             f"{run_label} {destination_id}": "put this here",
-        #         },
-        #         "files": [
-        #             {
-        #                 "name": "bids_tree.html",
-        #                 "info": {
-        #                     "value1": "foo",
-        #                     "value2": "bar",
-        #                     f"{run_label} {destination_id}": "put this here",
-        #                 },
-        #                 "tags": ["ein", "zwei"],
-        #             }
-        #         ],
-        #         "tags": [run_label, destination_id],
-        #     },
-        # }
-        # with open(f"{output_dir}/.metadata.json", "w") as fff:
-        #     json.dump(metadata, fff)
-        #     log.info(f"Wrote {output_dir}/.metadata.json")
 
         # Report errors and warnings at the end of the log so they can be easily seen.
         if len(warnings) > 0:
@@ -448,5 +402,5 @@ if __name__ == "__main__":
         gtk_context.init_logging("info")
     else:
         gtk_context.init_logging("debug")
-    
+
     sys.exit(main(gtk_context))
