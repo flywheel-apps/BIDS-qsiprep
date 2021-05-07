@@ -29,7 +29,7 @@ from utils.results.zip_intermediate import (
 
 log = logging.getLogger(__name__)
 
-GEAR = "bids-app-template"
+GEAR = "bids-qsiprep"
 REPO = "flywheel-apps"
 CONTAINER = f"{REPO}/{GEAR}]"
 
