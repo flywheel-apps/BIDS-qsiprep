@@ -1,7 +1,7 @@
 {
   "name": "bids-qsiprep",
   "label": "BIDS qsiprep",
-  "description": "<editme Name> (<version>) longer description.",
+  "description": "BIDS qsiprep 0.0.0_0.12.2 \n qsiprep configures pipelines for processing diffusion-weighted MRI (dMRI) data. The main features of this software are\n\nA BIDS-app approach to preprocessing nearly all kinds of modern diffusion MRI data.\n\nAutomatically generated preprocessing pipelines that correctly group, distortion correct, motion correct, denoise, coregister and resample your scans, producing visual reports and QC metrics.\n\nA system for running state-of-the-art reconstruction pipelines that include algorithms from Dipy, MRTrix, DSI Studio and others.\n\nA novel motion correction algorithm that works on DSI and random q-space sampling schemes",
   "version": "0.0.0f_0.12.2",
   "custom": {
     "docker-image": "flywheel/bids-qsiprep:0.0.0_0.12.2",
@@ -402,10 +402,10 @@
     "PYTHONUNBUFFERED": "1"
   },
   "command": "/usr/local/miniconda/bin/python run.py",
-  "author": "Dr. Smartypants, Whatsamatter U",
+  "author": "Flywheel",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "cite": "Dewy, Cheetum, and How; The templatest BIDS app you will ever see; PLOS ONE 12(9):e0184661; doi:10.1371/journal.pone.0184661.",
+  "cite": "https://qsiprep.readthedocs.io/en/latest/citing.html",
   "license": "MIT",
-  "source": "https://github.com/bids-apps/the-algorithm-run-by-the-gear",
-  "url": "https://github.com/flywheel-apps/bids-app-template"
+  "source": "https://qsiprep.readthedocs.io/en/latest/",
+  "url": "https://github.com/flywheel-apps/bids-qsiprep"
 }
