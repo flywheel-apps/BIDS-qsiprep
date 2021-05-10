@@ -1,5 +1,5 @@
 # editme: Change this to the BIDS App container
-FROM python:3.9-buster as base
+FROM pennbbl/qsiprep:0.12.2 as base
 
 # editme: Change this to your email.
 LABEL maintainer="support@flywheel.io"
@@ -18,11 +18,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     npm install -g bids-validator@1.5.7
 
-# Set up python to run Flywheel SDK isolated from whatever is in the base image
-RUN curl -sSLO \
-    https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh && \
-    bash Miniconda3-py38_4.8.3-Linux-x86_64.sh -b -p /usr/local/miniconda && \
-    rm Miniconda3-py38_4.8.3-Linux-x86_64.sh
 
 # Set CPATH for packages relying on compiled libs (e.g. indexed_gzip)
 ENV PATH="/usr/local/miniconda/bin:$PATH" \

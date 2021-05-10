@@ -75,6 +75,7 @@ main() {
     docker run -it --rm \
         --volume "$(pwd):/src" \
         --volume "$HOME/.config/flywheel:/root/.config/flywheel" \
+        --volume "$HOME/.config/flywheel:/home/qsiprep/.config/flywheel" \
         "${ENTRY_POINT}" \
         "${TESTING_IMAGE}" \
         "$@"
