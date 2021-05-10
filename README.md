@@ -110,7 +110,7 @@ to provide the license to this gear.  A license is required for this gear to run
 json file specifying a reconstruction pipeline to be run after preprocessing.
   
 ### eddy-config
-path to a json file with settings for the call to eddy. If no json is specified, a default one will be used. The current default json can be found here: https://github.com/PennBBL/qsiprep/blob/master/qsiprep/data/eddy_params.json",
+path to a json file with settings for the call to eddy. If no json is specified, a default one will be used. The current default json can be found here: https://github.com/PennBBL/qsiprep/blob/master/qsiprep/data/eddy_params.json
   
   
 # Configuration Options
@@ -264,10 +264,10 @@ Possible choices: none, 3dSHORE, eddy
 model used to generate target images for hmc. If “none” the non-b0 images will be warped using the same transform as their nearest b0 image. If “3dSHORE”, SHORELine will be used. If “eddy_ingress”, the dwis are assumed to have been run through fsls eddy.
   
 ### shoreline-iters
-number of SHORELine iterations. (default: 2)",
+number of SHORELine iterations. (default: 2)
   
 ### impute-slice-threshold
-impute data in slices that are this many SDs from expected. If 0 (default), no slices will be imputed",
+impute data in slices that are this many SDs from expected. If 0 (default), no slices will be imputed
 
   
 ### skull-strip-template
@@ -276,28 +276,28 @@ Possible choices: OASIS, NKI
 select ANTs skull-stripping template (default: OASIS)
   
 ### skull-strip-fixed-seed
-do not use a random seed for skull-stripping - will ensure run-to-run replicability when used with –omp-nthreads 1",
+do not use a random seed for skull-stripping - will ensure run-to-run replicability when used with –omp-nthreads 1
   
 ### skip-t1-based-spatial-normalization
 skip running the t1w-based normalization to template space. Default is to run the normalization.
   
 ### do-reconall
-Run the FreeSurfer recon-all pipeline",
+Run the FreeSurfer recon-all pipeline
   
 ### prefer-dedicated-fmaps
 forces unwarping to use files from the fmap directory instead of using an RPEdir scan from the same session.
   
 ### fmap-bspline
-fit a B-Spline field using least-squares (experimental)",
+fit a B-Spline field using least-squares (experimental)
   
 ### fmap-no-demean
-do not remove median (within mask) from fieldmap (default: True)",
+do not remove median (within mask) from fieldmap (default: True)
   
 ### use-syn-sdc
-EXPERIMENTAL: Use fieldmap-free distortion correction. To use this option, “template” must be passed to –output-space",
+EXPERIMENTAL: Use fieldmap-free distortion correction. To use this option, “template” must be passed to –output-space
   
 ### force-syn
-EXPERIMENTAL/TEMPORARY: Use SyN correction in addition to fieldmap correction, if available",
+EXPERIMENTAL/TEMPORARY: Use SyN correction in addition to fieldmap correction, if available
   
 ### reports-only
 only generate reports, don’t run workflows. This will only rerun report aggregation, not reportlet generation for specific nodes.
@@ -305,49 +305,16 @@ only generate reports, don’t run workflows. This will only rerun report aggreg
 ### participant_label
 a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
   
-  
+ 
 ### verbose
-  "description": "increases log verbosity for each occurrence, debug level is -vvv",
+  "description": "increases log verbosity for each occurrence, debug level is -vvv
 
 ### mem_mb
-Maximum memory to use (MB)",
-  "default": 10240,
+Maximum memory to use (MB). default 10240
   
 ### write-graph
-Write workflow graph",
+Write workflow graph
   
 ### ignore
-Ignore selected aspects of the input dataset to disable corresponding parts of the workflow (a space delimited list)  Possible choices: fieldmaps, slicetiming, sbref",
-  "default": "",
-  
-### gear-ignore-bids-errors
-By default, the gear will not run if there are any BIDS errors detected.  Set this to run even if BIDS errors are detected",
-  
-### gear-log-level
-description": "Gear Log verbosity level (INFO|DEBUG)",
-  
-
-### gear-run-bids-validation
-Gear will run BIDS validation after downloading data.  If validation fails <command> will NOT be run.
-  
-### gear-save-intermediate-output
-Gear will save ALL intermediate output into <command>_work.zip",
-  
-### gear-intermediate-files
-Space separated list of FILES to retain from the intermediate work directory.
-  "default": "",
-  
-### gear-intermediate-folders
-Space separated list of FOLDERS to retain from the intermediate work directory.
-  "default": "",
-  
-### gear-dry-run
-Do everything except actually executing <command>",
-  
-### gear-keep-output
-Don't delete output.  Output is always zipped into a single file for easy download.  Choose this option to prevent output deletion after zipping.
-  
-### gear-FREESURFER_LICENSE
-Text from license file generated during FreeSurfer registration. *Entries should be space separated*",
-  
+Ignore selected aspects of the input dataset to disable corresponding parts of the workflow (a space delimited list)  Possible choices: fieldmaps, slicetiming, sbref
   
