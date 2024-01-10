@@ -1,4 +1,5 @@
-[
+This code has been archived.  The gear is now on GitLab [bids-qsiprep](https://gitlab.com/flywheel-io/flywheel-apps/bids-qsiprep)
+
 # BIDS-QSIPREP
 
 ## About
